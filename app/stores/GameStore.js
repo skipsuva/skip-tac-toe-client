@@ -10,13 +10,13 @@ class GameStore {
     this.gameId = null;
     this.playerInitials = null;
     this.gamePlayData = {};
+    this.playerMoveCount = 0;
 
     this.bindListeners({
       onValidInitials: GameActions.validInitials,
       onInvalidInitials: GameActions.invalidInitials,
 
       onCreateGame: GameActions.createGame,
-      onLoadingCreateGame: GameActions.loadingCreateGame,
       onUpdateCreateGame: GameActions.updateCreateGame,
       onFailedCreateGame: GameActions.failedCreateGame
     });
@@ -37,6 +37,9 @@ class GameStore {
   }
 
   onUpdateCreateGame(data) {
+    this.gameId = data.id
+    this.gamePlayData = data.game_data;
+    this.playerMoveCount = data.player_move_count;
     this.loading = false;
   }
 

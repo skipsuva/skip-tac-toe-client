@@ -4,12 +4,12 @@ import GameStore from '../stores/GameStore';
 
 var GameSource = {
 
-  createGame() {
+  createGame(playerInitials) {
     return new Promise(function (resolve, reject) {
       $.ajax({
         url: 'http://localhost:3000/v1/create',
         method: 'POST',
-        data: { player_initials: GameStore.player_initials }
+        data: { player_initials: playerInitials }
       }).done(resolve).fail(reject);
     });
   }

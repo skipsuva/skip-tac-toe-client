@@ -10,12 +10,12 @@ class GameActions {
     return true;
   }
 
-  createGame() {
+  createGame(playerInitials) {
     return (dispatch) => {
     dispatch();
     var that = this;
 
-    GameSource.createGame()
+    GameSource.createGame(playerInitials)
       .then(function(data) {
         that.updateCreateGame(data);
       })

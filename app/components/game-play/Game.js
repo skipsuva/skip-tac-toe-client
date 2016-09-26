@@ -12,7 +12,7 @@ var Game = React.createClass({
   },
 
   startGame() {
-    GameActions.createGame();
+    GameActions.createGame(this.props.GameStore.playerInitials);
   },
 
 
