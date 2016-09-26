@@ -9,7 +9,7 @@ class GameStore {
     this.canStartGame = false;
     this.gameId = null;
     this.playerInitials = null;
-    this.gamePlayData = {};
+    this.gameplayData = this.setDefaultGameData();
     this.playerMoveCount = 0;
 
     this.bindListeners({
@@ -37,8 +37,8 @@ class GameStore {
   }
 
   onUpdateCreateGame(data) {
-    this.gameId = data.id
-    this.gamePlayData = data.game_data;
+    this.gameId = data.id;
+    this.gameplayData = data.game_data;
     this.playerMoveCount = data.player_move_count;
     this.loading = false;
   }
@@ -48,6 +48,13 @@ class GameStore {
     this.loading = false;
   }
 
+  setDefaultGameData() {
+    return {
+      row_one: {a: '', b: '', c: ''},
+      row_two: {a: '', b: '', c: ''},
+      row_three: {a: '', b: '', c: ''}
+    };
+  }
 }
 
 module.exports = alt.createStore(GameStore, 'GameStore');

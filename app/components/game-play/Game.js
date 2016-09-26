@@ -1,6 +1,7 @@
 import React from 'react';
 import GameActions from '../../actions/GameActions';
 import PlayerName from './PlayerName';
+import GameBoard from './GameBoard';
 
 var Game = React.createClass({
   handleValidInitials(playerInitials){
@@ -31,6 +32,9 @@ var Game = React.createClass({
           onGameStart={this.handleGameStart}
         />
         {startButton}
+        <GameBoard
+          gameplayData={this.props.GameStore.gameplayData}
+        />
       </div>
     );
   }
