@@ -16,11 +16,23 @@ var Game = React.createClass({
     GameActions.createGame(this.props.GameStore.playerInitials);
   },
 
+  handleValidPlayerMove(selection) {
+    var gameId = this.props.GameStore.gameId;
+    GameActions.playerMove(gameId, selection);
+  },
+
 
   render() {
     var startButton;
-    if(this.props.GameStore.canStartGame){
+    var gameBoard;
+    if(this.props.GameStore.canCreateGame){
       startButton = <div className="" onClick={this.startGame}> Play </div>;
+    }
+    if(this.props.GameStore.canStartGame){
+      gameBoard = <GameBoard
+        gameplayData={this.props.GameStore.gameplayData}
+        onValidPlayerMove={this.handleValidPlayerMove}
+      />;
     }
 
     return(
@@ -32,9 +44,7 @@ var Game = React.createClass({
           onGameStart={this.handleGameStart}
         />
         {startButton}
-        <GameBoard
-          gameplayData={this.props.GameStore.gameplayData}
-        />
+        {gameBoard}
       </div>
     );
   }

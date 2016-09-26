@@ -2,6 +2,12 @@ import React from 'react';
 
 var GameBoard = React.createClass({
 
+  playerMove(e) {
+    var selection = e.target.id;
+    if(!this.props.gameplayData[selection].length){
+      this.props.onValidPlayerMove(selection);
+    }
+  },
 
   render() {
     var gameplayData = this.props.gameplayData;
@@ -10,35 +16,53 @@ var GameBoard = React.createClass({
       <div>
         <div className='columns'>
           <div className='column'>
-            <div className='notification is-info'>{gameplayData.row_one.a}</div>
+            <div id='row_1_col_1' className='notification is-info' onClick={this.playerMove}>
+              {gameplayData.row_1_col_1}
+            </div>
           </div>
           <div className='column'>
-            <div className='notification is-info'>{gameplayData.row_one.b}</div>
+            <div id='row_1_col_2' className='notification is-info' onClick={this.playerMove}>
+              {gameplayData.row_1_col_2}
+            </div>
           </div>
           <div className='column'>
-            <div className='notification is-info'>{gameplayData.row_one.c}</div>
-          </div>
-        </div>
-        <div className='columns'>
-          <div className='column'>
-            <div className='notification is-info'>{gameplayData.row_two.a}</div>
-          </div>
-          <div className='column'>
-            <div className='notification is-info'>{gameplayData.row_two.b}</div>
-          </div>
-          <div className='column'>
-            <div className='notification is-info'>{gameplayData.row_two.c}</div>
+            <div id='row_1_col_3' className='notification is-info' onClick={this.playerMove}>
+              {gameplayData.row_1_col_3}
+            </div>
           </div>
         </div>
         <div className='columns'>
           <div className='column'>
-            <div className='notification is-info'>{gameplayData.row_three.a}</div>
+            <div id='row_2_col_1' className='notification is-info' onClick={this.playerMove}>
+              {gameplayData.row_2_col_1}
+            </div>
           </div>
           <div className='column'>
-            <div className='notification is-info'>{gameplayData.row_three.b}</div>
+            <div id='row_2_col_2' className='notification is-info' onClick={this.playerMove}>
+              {gameplayData.row_2_col_2}
+            </div>
           </div>
           <div className='column'>
-            <div className='notification is-info'>{gameplayData.row_three.c}</div>
+            <div id='row_2_col_3' className='notification is-info' onClick={this.playerMove}>
+              {gameplayData.row_2_col_3}
+            </div>
+          </div>
+        </div>
+        <div className='columns'>
+          <div className='column'>
+            <div id='row_3_col_1' className='notification is-info' onClick={this.playerMove}>
+              {gameplayData.row_3_col_1}
+            </div>
+          </div>
+          <div className='column'>
+            <div id='row_3_col_2' className='notification is-info' onClick={this.playerMove}>
+              {gameplayData.row_3_col_2}
+            </div>
+          </div>
+          <div className='column'>
+            <div id='row_3_col_3' className='notification is-info' onClick={this.playerMove}>
+              {gameplayData.row_3_col_3}
+            </div>
           </div>
         </div>
       </div>
