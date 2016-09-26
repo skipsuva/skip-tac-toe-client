@@ -1,6 +1,8 @@
 import React from 'react';
 import AltContainer from 'alt-container';
 import LeaderboardStore from '../stores/LeaderboardStore';
+import BeginGameButton from './leaderboard/BeginGameButton';
+import Leaderboard from './leaderboard/Leaderboard';
 
 var LeaderboardContainer = React.createClass({
 
@@ -8,7 +10,8 @@ var LeaderboardContainer = React.createClass({
     return(
       <div>
         <AltContainer stores={{ LeaderboardStore }} >
-          <h1>LeaderboardContainer component</h1>
+          <BeginGameButton />
+          <Leaderboard />
         </AltContainer>
       </div>
     );
