@@ -20,34 +20,29 @@ class GameStore {
       onUpdateCreateGame: GameActions.updateCreateGame,
       onFailedCreateGame: GameActions.failedCreateGame
     });
-
-    this.exportAsync(GameSource);
   }
 
   onValidInitials(playerInitials) {
-    debugger;
     this.playerInitials = playerInitials;
     this.canStartGame = true;
   }
 
   onInvalidInitials() {
-    debugger;
     this.playerInitials = null;
     this.canStartGame = false;
   }
 
-  onCreateGame() {}
-
-  onLoadingCreateGame() {
-
+  onCreateGame() {
+    this.loading = true;
   }
 
   onUpdateCreateGame(data) {
-
+    this.loading = false;
   }
 
   onFailedCreateGame(error) {
-
+    this.error = error;
+    this.loading = false;
   }
 
 }

@@ -11,10 +11,6 @@ var PlayerName = React.createClass({
     }
   },
 
-  startGame(){
-    this.props.onGameStart();
-  },
-
   render() {
     return(
       <div>
@@ -25,11 +21,6 @@ var PlayerName = React.createClass({
           type="text"
           onChange={this.validateInitials}
         />
-        <div
-          className=""
-          onClick={this.startGame}>
-          Play
-        </div>
       </div>
     );
   }

@@ -1,22 +1,28 @@
 import alt from '../alt';
+import GameSource from '../sources/GameSource';
 
 class GameActions {
   validInitials(playerInitials) {
-    debugger;
     return playerInitials;
   }
 
   invalidInitials() {
-    debugger;
     return true;
   }
 
-  createGame(playerInitials) {
-    return playerInitials;
-  }
+  createGame() {
+    return (dispatch) => {
+    dispatch();
+    var that = this;
 
-  loadingCreateGame() {
-    return true;
+    GameSource.createGame()
+      .then(function(data) {
+        that.updateCreateGame(data);
+      })
+      .catch((errorMessage) => {
+        that.failedCreateGame(errorMessage);
+      });
+    };
   }
 
   updateCreateGame(data) {

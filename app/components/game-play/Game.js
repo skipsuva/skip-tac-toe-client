@@ -11,12 +11,17 @@ var Game = React.createClass({
     GameActions.invalidInitials();
   },
 
-  handleGameStart(playerInitials) {
+  startGame() {
     GameActions.createGame();
   },
 
 
   render() {
+    var startButton;
+    if(this.props.GameStore.canStartGame){
+      startButton = <div className="" onClick={this.startGame}> Play </div>;
+    }
+
     return(
       <div>
         <h1>Game component</h1>
@@ -25,6 +30,7 @@ var Game = React.createClass({
           onInvalidInitials={this.handleInvalidInitials}
           onGameStart={this.handleGameStart}
         />
+        {startButton}
       </div>
     );
   }
