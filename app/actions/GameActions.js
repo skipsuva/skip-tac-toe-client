@@ -33,6 +33,29 @@ class GameActions {
     return error;
   }
 
+  playerMove(gameId, selection) {
+    return (dispatch) => {
+    dispatch(selection);
+    var that = this;
+
+    GameSource.playerMove(gameId, selection)
+      .then(function(data) {
+        that.updatePlayerMove(data);
+      })
+      .catch((errorMessage) => {
+        that.failedPlayerMove(errorMessage);
+      });
+    };
+  }
+
+  updatePlayerMove(data) {
+    return data;
+  }
+
+  failedPlayerMove(error) {
+    return error;
+  }
+
 }
 
 module.exports = alt.createActions(GameActions);

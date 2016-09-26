@@ -6,11 +6,13 @@ class GameStore {
   constructor(){
     this.error = null;
     this.loading = false;
+    this.canCreateGame = false;
     this.canStartGame = false;
     this.gameId = null;
     this.playerInitials = null;
-    this.gamePlayData = {};
+    this.gameplayData = this.setDefaultGameData();
     this.playerMoveCount = 0;
+    this.playerWon = null;
 
     this.bindListeners({
       onValidInitials: GameActions.validInitials,
@@ -18,18 +20,22 @@ class GameStore {
 
       onCreateGame: GameActions.createGame,
       onUpdateCreateGame: GameActions.updateCreateGame,
-      onFailedCreateGame: GameActions.failedCreateGame
+      onFailedCreateGame: GameActions.failedCreateGame,
+
+      onPlayerMove: GameActions.playerMove,
+      onUpdatePlayerMove: GameActions.updatePlayerMove,
+      onFailedPlayerMove: GameActions.failedPlayerMove
     });
   }
 
   onValidInitials(playerInitials) {
     this.playerInitials = playerInitials;
-    this.canStartGame = true;
+    this.canCreateGame = true;
   }
 
   onInvalidInitials() {
     this.playerInitials = null;
-    this.canStartGame = false;
+    this.canCreateGame = false;
   }
 
   onCreateGame() {
@@ -37,10 +43,11 @@ class GameStore {
   }
 
   onUpdateCreateGame(data) {
-    this.gameId = data.id
-    this.gamePlayData = data.game_data;
+    this.gameId = data.id;
+    this.gameplayData = data.game_data;
     this.playerMoveCount = data.player_move_count;
     this.loading = false;
+    this.canStartGame = true;
   }
 
   onFailedCreateGame(error) {
@@ -48,6 +55,34 @@ class GameStore {
     this.loading = false;
   }
 
+  onPlayerMove(selection) {
+    this.gameplayData[selection] = "O";
+    this.playerMoveCount ++;
+  }
+
+  onUpdatePlayerMove(data) {
+    this.gameplayData = data.game_data;
+    this.playerMoveCount = data.player_move_count;
+    this.playerWon = data.player_won;
+  }
+
+  onFailedPlayerMove(error) {
+
+  }
+
+  setDefaultGameData() {
+    return {
+      row_1_col_1: "",
+      row_1_col_2: "",
+      row_1_col_3: "",
+      row_2_col_1: "",
+      row_2_col_2: "",
+      row_2_col_3: "",
+      row_3_col_1: "",
+      row_3_col_2: "",
+      row_3_col_3: ""
+    };
+  }
 }
 
 module.exports = alt.createStore(GameStore, 'GameStore');
