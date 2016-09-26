@@ -17,7 +17,7 @@ var GameSource = {
   playerMove(gameId, selection) {
     return new Promise(function (resolve, reject) {
       $.ajax({
-        url: 'http://localhost:3000/v1/player_move',
+        url: 'https://skip-tac-toe-api.herokuapp.com/v1/player_move',
         method: 'PATCH',
         data: { id: gameId, player_move: selection }
       }).done(resolve).fail(reject);
