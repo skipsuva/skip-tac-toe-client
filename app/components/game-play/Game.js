@@ -3,8 +3,16 @@ import GameActions from '../../actions/GameActions';
 import PlayerName from './PlayerName';
 
 var Game = React.createClass({
+  handleValidInitials(playerInitials){
+    GameActions.validInitials(playerInitials);
+  },
+
+  handleInvalidInitials(){
+    GameActions.invalidInitials();
+  },
+
   handleGameStart(playerInitials) {
-    GameActions.startGame(playerInitials);
+    GameActions.createGame();
   },
 
 
@@ -13,6 +21,8 @@ var Game = React.createClass({
       <div>
         <h1>Game component</h1>
         <PlayerName
+          onValidInitials={this.handleValidInitials}
+          onInvalidInitials={this.handleInvalidInitials}
           onGameStart={this.handleGameStart}
         />
       </div>

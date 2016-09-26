@@ -1,14 +1,18 @@
 import React from 'react';
 
 var PlayerName = React.createClass({
+
   validateInitials(e) {
     var initials = e.target.value;
-    // validate player entry
-    this.setState({playerInitials: e.target.value});
+    if(initials.length > 2) {
+      this.props.onValidInitials(initials);
+    } else {
+      this.props.onInvalidInitials();
+    }
   },
 
   startGame(){
-    this.props.onGameStart(this.state.playerInitials);
+    this.props.onGameStart();
   },
 
   render() {
