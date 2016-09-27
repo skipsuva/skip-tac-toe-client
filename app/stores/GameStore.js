@@ -10,21 +10,26 @@ class GameStore {
     this.canStartGame = false;
     this.gameId = null;
     this.playerInitials = null;
-    this.gameplayData = this.setDefaultGameData();
+    this.gameplayData = this._setDefaultGameData();
     this.playerMoveCount = 0;
     this.playerWon = null;
+    this.isStalemate = null;
 
     this.bindListeners({
-      onValidInitials: GameActions.validInitials,
-      onInvalidInitials: GameActions.invalidInitials,
+      onValidInitials:    GameActions.validInitials,
+      onInvalidInitials:  GameActions.invalidInitials,
 
-      onCreateGame: GameActions.createGame,
+      onCreateGame:       GameActions.createGame,
       onUpdateCreateGame: GameActions.updateCreateGame,
       onFailedCreateGame: GameActions.failedCreateGame,
 
-      onPlayerMove: GameActions.playerMove,
+      onPlayerMove:       GameActions.playerMove,
       onUpdatePlayerMove: GameActions.updatePlayerMove,
-      onFailedPlayerMove: GameActions.failedPlayerMove
+      onFailedPlayerMove: GameActions.failedPlayerMove,
+
+      onResetGame:        GameActions.resetGame,
+      onUpdateResetGame:  GameActions.updateResetGame,
+      onFailedResetGame:  GameActions.failedResetGame
     });
   }
 
@@ -64,13 +69,31 @@ class GameStore {
     this.gameplayData = data.game_data;
     this.playerMoveCount = data.player_move_count;
     this.playerWon = data.player_won;
+    this.isStalemate = data.is_stalemate;
   }
 
   onFailedPlayerMove(error) {
+    this.error = error;
+    this.loading = false;
+  }
+
+  onResetGame() {
+    this.gameplayData = this._setDefaultGameData();
+    this.playerMoveCount = 0;
+    this.loading = true;
+  }
+
+  onUpdateResetGame() {
+    this.gameplayData = data.game_data;
+    this.playerMoveCount = data.player_move_count;
+    this.loading = false;
+  }
+
+  onFailedResetGame() {
 
   }
 
-  setDefaultGameData() {
+  _setDefaultGameData() {
     return {
       row_1_col_1: "",
       row_1_col_2: "",

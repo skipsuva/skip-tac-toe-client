@@ -16,6 +16,11 @@ var Game = React.createClass({
     GameActions.createGame(this.props.GameStore.playerInitials);
   },
 
+  resetGame() {
+    var gameId = this.props.GameStore.gameId;
+    GameActions.resetGame(gameId);
+  },
+
   handleValidPlayerMove(selection) {
     var gameId = this.props.GameStore.gameId;
     GameActions.playerMove(gameId, selection);
@@ -23,17 +28,23 @@ var Game = React.createClass({
 
 
   render() {
+    var store = this.props.GameStore;
     var startButton;
     var gameBoard;
-    if(this.props.GameStore.canCreateGame){
+    var resetGameButton;
+
+    if(store.canCreateGame && !store.gameId ){
       startButton = <div className="" onClick={this.startGame}> Play </div>;
-    }
-    if(this.props.GameStore.canStartGame){
+    } else { startButton = "";}
+    if(store.canStartGame){
       gameBoard = <GameBoard
-        gameplayData={this.props.GameStore.gameplayData}
+        gameplayData={store.gameplayData}
         onValidPlayerMove={this.handleValidPlayerMove}
       />;
     }
+    if(store.gameId && (store.playerWon === null) && (store.isStalemate === null)) {
+      resetGameButton = <div className="" onClick={this.resetGame}> Start Over </div>;
+    } else {resetGameButton = "";}
 
     return(
       <div>
@@ -45,6 +56,7 @@ var Game = React.createClass({
         />
         {startButton}
         {gameBoard}
+        {resetGameButton}
       </div>
     );
   }

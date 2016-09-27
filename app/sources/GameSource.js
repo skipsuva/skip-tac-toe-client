@@ -22,6 +22,16 @@ var GameSource = {
         data: { id: gameId, player_move: selection }
       }).done(resolve).fail(reject);
     });
+  },
+
+  resetGame(gameId) {
+    return new Promise(function (resolve, reject) {
+      $.ajax({
+        url: 'http://localhost:3000/v1/reset',
+        method: 'PATCH',
+        data: { id: gameId }
+      }).done(resolve).fail(reject);
+    });
   }
 
 };

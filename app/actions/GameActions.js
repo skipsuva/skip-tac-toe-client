@@ -56,6 +56,29 @@ class GameActions {
     return error;
   }
 
+  resetGame(gameId) {
+    return (dispatch) => {
+    dispatch();
+    var that = this;
+
+    GameSource.resetGame(gameId)
+      .then(function(data) {
+        that.updateResetGame(data);
+      })
+      .catch((errorMessage) => {
+        that.failedResetGame(errorMessage);
+      });
+    };
+  }
+
+  updateResetGame(data) {
+    return data;
+  }
+
+  failedResetGame(error) {
+    return error;
+  }
+
 }
 
 module.exports = alt.createActions(GameActions);
