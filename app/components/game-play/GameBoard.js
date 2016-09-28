@@ -1,4 +1,6 @@
 import React from 'react';
+import ResetButton from './ResetButton';
+import GameOverContent from './GameOverContent';
 
 var GameBoard = React.createClass({
 
@@ -15,7 +17,7 @@ var GameBoard = React.createClass({
     return(
       <div>
         {this.props.store.canStartGame ? (
-          <section className="hero is-dark is-medium">
+          <section className="hero is-dark is-small">
             <div id="game-board-container" className="hero-body">
               <div className="has-text-centered">
                 <div id="game-board-container">
@@ -71,6 +73,14 @@ var GameBoard = React.createClass({
                     </div>
                   </div>
                 </div>
+                <ResetButton
+                  resetGame={this.props.resetGame}
+                  store={this.props.store}
+                />
+                <GameOverContent
+                  startGame={this.props.startGame}
+                  store={this.props.store}
+                />
               </div>
             </div>
           </section>

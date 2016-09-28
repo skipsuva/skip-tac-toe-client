@@ -16,7 +16,7 @@ var PlayerName = React.createClass({
     return(
       <div>
       {!this.props.store.gameId ? (
-        <section className="hero is-dark is-medium">
+        <section className="hero is-dark is-small">
           <div className="hero-body">
             <div className="container has-text-centered">
               <div className="control">

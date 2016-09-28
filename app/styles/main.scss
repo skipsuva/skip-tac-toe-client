@@ -43,6 +43,7 @@ body {
 
 #game-board-container{
   margin: auto;
+  margin-top: 0;
 
   .game-tile-row {
     float: left;
@@ -59,6 +60,32 @@ body {
     line-height: 65px;
     width: 100px;
     height: 100px;
+    font-size: 70px;
   }
+}
 
+#reset-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 20px 0px;
+}
+
+#game-over-text {
+  font-size: 24px;
+}
+
+.game-over-buttons-container {
+  margin: auto;
+  width: 100%;
+
+  #start-over-button{
+    width: 45%;
+    float: left;
+    margin: 10px 5px 20px 0px;
+  }
+  #leaderboard-button{
+    width: 45%;
+    float: right;
+    margin: 10px 0px 20px 5px;
+  }
 }
