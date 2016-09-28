@@ -14,13 +14,23 @@ var PlayerName = React.createClass({
   render() {
     return(
       <div>
-        <h3>PlayerName component</h3>
-        <input
-          className=""
-          placeholder="Enter your initials"
-          type="text"
-          onChange={this.validateInitials}
-        />
+        <section className="hero is-dark is-medium">
+          <div className="hero-body">
+            <div className="container has-text-centered">
+              <div className="control">
+                <div id="name-input-container" className="control">
+                  <input
+                    id="name-input"
+                    className="input"
+                    placeholder="Enter Your Initials"
+                    type="text"
+                    onChange={this.validateInitials}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
