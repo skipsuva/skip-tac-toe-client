@@ -1,13 +1,13 @@
 import alt from '../alt';
+import LeaderboardSource from '../sources/LeaderboardSource';
 
 class LeaderboardActions {
-
   fetchLeaderboardItems() {
     return (dispatch) => {
     dispatch();
     var that = this;
 
-    GameSource.fetchLeaderboard()
+    LeaderboardSource.fetchLeaderboard()
       .then(function(data) {
         that.updateFetchLeaderboard(data);
       })

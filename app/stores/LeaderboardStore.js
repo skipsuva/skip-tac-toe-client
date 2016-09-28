@@ -6,7 +6,7 @@ class LeaderboardStore {
     this.leaderboardItems = [];
 
     this.bindListeners({
-      handleFetchLeaderboard: LeaderboardActions.fetchLeaderboard,
+      handleFetchLeaderboard: LeaderboardActions.fetchLeaderboardItems,
       handleUpdateFetchLeaderboard: LeaderboardActions.updateFetchLeaderboard,
       handleFailedFetchLeaderboard: LeaderboardActions.failedFetchLeaderboard
     });

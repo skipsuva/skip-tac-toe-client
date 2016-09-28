@@ -5,7 +5,7 @@ var LeaderboardItem = React.createClass({
     return(
       <tr>
         <td>{this.props.item.name}</td>
-        <td>{this.props.item.playerMoveCount}</td>
+        <td>{this.props.item.player_move_count}</td>
       </tr>
     );
   }
