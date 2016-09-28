@@ -4,7 +4,7 @@ var GameBoard = React.createClass({
 
   playerMove(e) {
     var selection = e.target.id;
-    if(!this.props.store.gameplayData[selection].length){
+    if(!this.props.store.gameplayData[selection].length && !this.props.store.gameIsOver){
       this.props.onValidPlayerMove(selection);
     }
   },

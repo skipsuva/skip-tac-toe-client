@@ -32,7 +32,7 @@ var Game = React.createClass({
 
   render() {
     var store = this.props.GameStore;
-    
+
     return(
       <div>
         <PlayerName
@@ -53,6 +53,7 @@ var Game = React.createClass({
           store={this.props.GameStore}
         />
         <GameOverContent
+          startGame={this.onStartGame}
           store={this.props.GameStore}
         />
       </div>

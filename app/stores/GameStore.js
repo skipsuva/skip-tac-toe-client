@@ -54,6 +54,9 @@ class GameStore {
     this.playerMoveCount = data.player_move_count;
     this.loading = false;
     this.canStartGame = true;
+    this.playerWon = null;
+    this.isStalemate = null;
+    this.gameIsOver = false;
   }
 
   onFailedCreateGame(error) {
