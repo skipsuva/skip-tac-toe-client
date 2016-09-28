@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "prod": "NODE_ENV=production node server.js",
-    "postinstall": "webpack -p"
+    "postinstall": "webpack -p --config webpack.prod.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +38,8 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "webpack-dev-middleware": "^1.8.3",
+    "webpack-dev-server": "^1.16.1",
+    "webpack-hot-middleware": "^2.12.2"
   }
 }
