@@ -2,7 +2,6 @@ import React from 'react';
 import GameActions from '../../actions/GameActions';
 import PlayerName from './PlayerName';
 import GameBoard from './GameBoard';
-import StartButton from './StartButton';
 import ResetButton from './ResetButton';
 import GameOverContent from './GameOverContent';
 
@@ -38,10 +37,7 @@ var Game = React.createClass({
         <PlayerName
           onValidInitials={this.handleValidInitials}
           onInvalidInitials={this.handleInvalidInitials}
-          onGameStart={this.handleGameStart}
-        />
-        <StartButton
-          startGame={this.onStartGame}
+          onStartGame={this.onStartGame}
           store={this.props.GameStore}
         />
         <GameBoard

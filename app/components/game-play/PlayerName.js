@@ -1,4 +1,5 @@
 import React from 'react';
+import StartButton from './StartButton';
 
 var PlayerName = React.createClass({
 
@@ -25,6 +26,10 @@ var PlayerName = React.createClass({
                     placeholder="Enter Your Initials"
                     type="text"
                     onChange={this.validateInitials}
+                  />
+                  <StartButton
+                    startGame={this.props.onStartGame}
+                    store={this.props.store}
                   />
                 </div>
               </div>
