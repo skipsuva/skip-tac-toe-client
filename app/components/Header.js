@@ -8,9 +8,11 @@ var Header = React.createClass({
       <section id="header" className="hero is-dark">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title">
-              Skip Tac Toe
-            </h1>
+            <div className="title">
+              <img className="header-menu-png"
+              src="/vendor/assets/images/logo.png"
+              />
+            </div>
           </div>
         </div>
       </section>

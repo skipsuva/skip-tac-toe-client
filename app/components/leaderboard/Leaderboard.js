@@ -24,11 +24,7 @@ var Leaderboard = React.createClass({
                 return <LeaderboardItem
                   key={item.id}
                   item={item} />;
-              }.bind(this))}
-              <tr>
-                <td>Misty Abbott</td>
-                <td>Bass Guitar</td>
-              </tr>
+              })}
             </tbody>
           </table>
         </div>
