@@ -14,6 +14,7 @@ class GameStore {
     this.playerMoveCount = 0;
     this.playerWon = null;
     this.isStalemate = null;
+    this.gameIsOver = false;
 
     this.bindListeners({
       onValidInitials:    GameActions.validInitials,
@@ -70,6 +71,7 @@ class GameStore {
     this.playerMoveCount = data.player_move_count;
     this.playerWon = data.player_won;
     this.isStalemate = data.is_stalemate;
+    this.gameIsOver = this._isGameOver();
   }
 
   onFailedPlayerMove(error) {
@@ -86,11 +88,11 @@ class GameStore {
   onUpdateResetGame() {
     this.gameplayData = data.game_data;
     this.playerMoveCount = data.player_move_count;
+    this.gameIsOver = false;
     this.loading = false;
   }
 
   onFailedResetGame() {
-
   }
 
   _setDefaultGameData() {
@@ -105,6 +107,10 @@ class GameStore {
       row_3_col_2: "",
       row_3_col_3: ""
     };
+  }
+
+  _isGameOver() {
+    return this.playerWon !== null ||  this.isStalemate !== null;
   }
 }
 

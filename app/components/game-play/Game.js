@@ -2,6 +2,9 @@ import React from 'react';
 import GameActions from '../../actions/GameActions';
 import PlayerName from './PlayerName';
 import GameBoard from './GameBoard';
+import StartButton from './StartButton';
+import ResetButton from './ResetButton';
+import GameOverContent from './GameOverContent';
 
 var Game = React.createClass({
   handleValidInitials(playerInitials){
@@ -12,11 +15,11 @@ var Game = React.createClass({
     GameActions.invalidInitials();
   },
 
-  startGame() {
+  onStartGame() {
     GameActions.createGame(this.props.GameStore.playerInitials);
   },
 
-  resetGame() {
+  onResetGame() {
     var gameId = this.props.GameStore.gameId;
     GameActions.resetGame(gameId);
   },
@@ -29,34 +32,29 @@ var Game = React.createClass({
 
   render() {
     var store = this.props.GameStore;
-    var startButton;
-    var gameBoard;
-    var resetGameButton;
-
-    if(store.canCreateGame && !store.gameId ){
-      startButton = <div className="" onClick={this.startGame}> Play </div>;
-    } else { startButton = "";}
-    if(store.canStartGame){
-      gameBoard = <GameBoard
-        gameplayData={store.gameplayData}
-        onValidPlayerMove={this.handleValidPlayerMove}
-      />;
-    }
-    if(store.gameId && (store.playerWon === null) && (store.isStalemate === null)) {
-      resetGameButton = <div className="" onClick={this.resetGame}> Start Over </div>;
-    } else {resetGameButton = "";}
-
+    
     return(
       <div>
-        <h1>Game component</h1>
         <PlayerName
           onValidInitials={this.handleValidInitials}
           onInvalidInitials={this.handleInvalidInitials}
           onGameStart={this.handleGameStart}
         />
-        {startButton}
-        {gameBoard}
-        {resetGameButton}
+        <StartButton
+          startGame={this.onStartGame}
+          store={this.props.GameStore}
+        />
+        <GameBoard
+          store={this.props.GameStore}
+          onValidPlayerMove={this.handleValidPlayerMove}
+        />
+        <ResetButton
+          resetGame={this.onResetGame}
+          store={this.props.GameStore}
+        />
+        <GameOverContent
+          store={this.props.GameStore}
+        />
       </div>
     );
   }
