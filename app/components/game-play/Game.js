@@ -2,6 +2,9 @@ import React from 'react';
 import GameActions from '../../actions/GameActions';
 import PlayerName from './PlayerName';
 import GameBoard from './GameBoard';
+import StartButton from './StartButton';
+import ResetButton from './ResetButton';
+import GameOverContent from './GameOverContent';
 
 var Game = React.createClass({
   handleValidInitials(playerInitials){
@@ -12,8 +15,13 @@ var Game = React.createClass({
     GameActions.invalidInitials();
   },
 
-  startGame() {
+  onStartGame() {
     GameActions.createGame(this.props.GameStore.playerInitials);
+  },
+
+  onResetGame() {
+    var gameId = this.props.GameStore.gameId;
+    GameActions.resetGame(gameId);
   },
 
   handleValidPlayerMove(selection) {
@@ -23,28 +31,31 @@ var Game = React.createClass({
 
 
   render() {
-    var startButton;
-    var gameBoard;
-    if(this.props.GameStore.canCreateGame){
-      startButton = <div className="" onClick={this.startGame}> Play </div>;
-    }
-    if(this.props.GameStore.canStartGame){
-      gameBoard = <GameBoard
-        gameplayData={this.props.GameStore.gameplayData}
-        onValidPlayerMove={this.handleValidPlayerMove}
-      />;
-    }
+    var store = this.props.GameStore;
 
     return(
       <div>
-        <h1>Game component</h1>
         <PlayerName
           onValidInitials={this.handleValidInitials}
           onInvalidInitials={this.handleInvalidInitials}
           onGameStart={this.handleGameStart}
         />
-        {startButton}
-        {gameBoard}
+        <StartButton
+          startGame={this.onStartGame}
+          store={this.props.GameStore}
+        />
+        <GameBoard
+          store={this.props.GameStore}
+          onValidPlayerMove={this.handleValidPlayerMove}
+        />
+        <ResetButton
+          resetGame={this.onResetGame}
+          store={this.props.GameStore}
+        />
+        <GameOverContent
+          startGame={this.onStartGame}
+          store={this.props.GameStore}
+        />
       </div>
     );
   }

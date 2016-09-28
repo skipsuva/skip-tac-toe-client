@@ -10,21 +10,27 @@ class GameStore {
     this.canStartGame = false;
     this.gameId = null;
     this.playerInitials = null;
-    this.gameplayData = this.setDefaultGameData();
+    this.gameplayData = this._setDefaultGameData();
     this.playerMoveCount = 0;
     this.playerWon = null;
+    this.isStalemate = null;
+    this.gameIsOver = false;
 
     this.bindListeners({
-      onValidInitials: GameActions.validInitials,
-      onInvalidInitials: GameActions.invalidInitials,
+      onValidInitials:    GameActions.validInitials,
+      onInvalidInitials:  GameActions.invalidInitials,
 
-      onCreateGame: GameActions.createGame,
+      onCreateGame:       GameActions.createGame,
       onUpdateCreateGame: GameActions.updateCreateGame,
       onFailedCreateGame: GameActions.failedCreateGame,
 
-      onPlayerMove: GameActions.playerMove,
+      onPlayerMove:       GameActions.playerMove,
       onUpdatePlayerMove: GameActions.updatePlayerMove,
-      onFailedPlayerMove: GameActions.failedPlayerMove
+      onFailedPlayerMove: GameActions.failedPlayerMove,
+
+      onResetGame:        GameActions.resetGame,
+      onUpdateResetGame:  GameActions.updateResetGame,
+      onFailedResetGame:  GameActions.failedResetGame
     });
   }
 
@@ -48,6 +54,9 @@ class GameStore {
     this.playerMoveCount = data.player_move_count;
     this.loading = false;
     this.canStartGame = true;
+    this.playerWon = null;
+    this.isStalemate = null;
+    this.gameIsOver = false;
   }
 
   onFailedCreateGame(error) {
@@ -64,13 +73,32 @@ class GameStore {
     this.gameplayData = data.game_data;
     this.playerMoveCount = data.player_move_count;
     this.playerWon = data.player_won;
+    this.isStalemate = data.is_stalemate;
+    this.gameIsOver = this._isGameOver();
   }
 
   onFailedPlayerMove(error) {
-
+    this.error = error;
+    this.loading = false;
   }
 
-  setDefaultGameData() {
+  onResetGame() {
+    this.gameplayData = this._setDefaultGameData();
+    this.playerMoveCount = 0;
+    this.loading = true;
+  }
+
+  onUpdateResetGame() {
+    this.gameplayData = data.game_data;
+    this.playerMoveCount = data.player_move_count;
+    this.gameIsOver = false;
+    this.loading = false;
+  }
+
+  onFailedResetGame() {
+  }
+
+  _setDefaultGameData() {
     return {
       row_1_col_1: "",
       row_1_col_2: "",
@@ -82,6 +110,10 @@ class GameStore {
       row_3_col_2: "",
       row_3_col_3: ""
     };
+  }
+
+  _isGameOver() {
+    return this.playerWon !== null ||  this.isStalemate !== null;
   }
 }
 
