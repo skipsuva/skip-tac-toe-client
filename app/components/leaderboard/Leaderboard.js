@@ -1,6 +1,12 @@
 import React from 'react';
+import LeaderboardActions from '../../actions/LeaderboardActions';
+import LeaderboardItem from './LeaderboardItem';
 
 var Leaderboard = React.createClass({
+
+  componentWillMount(){
+    LeaderboardActions.fetchLeaderboardItems();
+  },
 
   render() {
     return(
@@ -14,10 +20,11 @@ var Leaderboard = React.createClass({
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Misty Abbott</td>
-                <td>Bass Guitar</td>
-              </tr>
+              {this.props.LeaderboardStore.leaderboardItems.map(function(item) {
+                return <LeaderboardItem
+                  key={item.id}
+                  item={item} />;
+              }.bind(this))}
               <tr>
                 <td>Misty Abbott</td>
                 <td>Bass Guitar</td>
