@@ -27,7 +27,7 @@ var GameSource = {
   resetGame(gameId) {
     return new Promise(function (resolve, reject) {
       $.ajax({
-        url: 'http://localhost:3000/v1/reset',
+        url: 'https://skip-tac-toe-api.herokuapp.com/v1/reset',
         method: 'PATCH',
         data: { id: gameId }
       }).done(resolve).fail(reject);
