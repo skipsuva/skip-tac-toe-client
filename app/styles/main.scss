@@ -40,3 +40,25 @@ body {
     padding: 20px 0px;
   }
 }
+
+#game-board-container{
+  margin: auto;
+
+  .game-tile-row {
+    float: left;
+    text-align: center;
+
+    .game-tile-column {
+      padding: 2px;
+    }
+  }
+
+  .notification.is-info{
+    cursor: pointer;
+    background-color: grey;
+    line-height: 65px;
+    width: 100px;
+    height: 100px;
+  }
+
+}
