@@ -6,7 +6,7 @@ var StartButton = React.createClass({
     return(
       <div>
         {this.props.store.canCreateGame && !this.props.store.gameId ? (
-          <div className="" onClick={this.props.startGame}> Play </div>
+          <div id="start-button" className="button is-danger" onClick={this.props.startGame}> Begin </div>
         ) : null}
       </div>
     );

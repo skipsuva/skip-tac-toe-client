@@ -6,8 +6,9 @@ var BeginGameButton = React.createClass({
   render() {
     return(
       <div>
-        <h5>BeginGameButton component</h5>
-        <Link to='/play'>Play!</Link>
+        <div className="begin-game-button-container">
+          <Link id= "begin-game-button" className="button is-warning is-outlined" to='/play'>PLAY</Link>
+        </div>
       </div>
     );
   }

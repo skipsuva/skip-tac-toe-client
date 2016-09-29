@@ -88,7 +88,7 @@ class GameStore {
     this.loading = true;
   }
 
-  onUpdateResetGame() {
+  onUpdateResetGame(data) {
     this.gameplayData = data.game_data;
     this.playerMoveCount = data.player_move_count;
     this.gameIsOver = false;

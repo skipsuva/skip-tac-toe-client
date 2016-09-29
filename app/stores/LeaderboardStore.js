@@ -3,12 +3,25 @@ import LeaderboardActions from '../actions/LeaderboardActions';
 
 class LeaderboardStore {
   constructor(){
-    // set initial state
+    this.leaderboardItems = [];
 
     this.bindListeners({
-      // set listeners on actions
+      handleFetchLeaderboard: LeaderboardActions.fetchLeaderboardItems,
+      handleUpdateFetchLeaderboard: LeaderboardActions.updateFetchLeaderboard,
+      handleFailedFetchLeaderboard: LeaderboardActions.failedFetchLeaderboard
     });
   }
+
+  handleFetchLeaderboard() { }
+
+  handleUpdateFetchLeaderboard(data) {
+    this.leaderboardItems = data;
+  }
+
+  handleFailedFetchLeaderboard() {
+  }
+
+
 
 }
 
