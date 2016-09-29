@@ -1,0 +1,143 @@
+
+$dark-grey: rgb(54, 54, 54);
+
+html {
+  background-color: rgb(54, 54, 54);
+  height: 100%;
+  margin:0;
+}
+body {
+  background-color: rgb(54, 54, 54);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#header {
+  text-align: center;
+
+  .hero-body {
+    padding: 20px 20px;
+  }
+
+  .header-menu-png{
+    height: 80px;
+  }
+
+  .title {
+    font-size: 50px;
+  }
+
+}
+
+.begin-game-button-container {
+  margin: auto;
+  width: 40%;
+
+  #begin-game-button {
+    width: 100%;
+    height: 40px;
+    font-size: 25px;
+  }
+}
+
+.leaderboard-container {
+  margin: auto;
+  width: 40%;
+  margin-top: 20px;
+
+  #leaderboard-table{
+    border-radius: 4px;
+    background-color: lighten($dark-grey, 25%);
+
+    th {
+      color: white;
+      border-radius: 4px;
+    }
+    tr {
+      color: $dark-grey;
+      border-radius: 4px;
+      &:hover {
+        background-color: lighten($dark-grey, 30%);
+      }
+
+      td {
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+#name-input-container {
+  width: 30%;
+  margin: auto;
+  font-size: large;
+
+  #name-input {
+    text-align: center;
+    background-color: lighten($dark-grey, 10%);
+    color: white;
+    font-size: 15px;
+    height: 95px;
+
+    &:focus {
+      border-color: white;
+    }
+  }
+
+  #start-button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 20px 0px;
+  }
+}
+
+#game-board-container{
+  margin: auto;
+  margin-top: 0;
+  padding: 20px 20px;
+
+  .game-tile-row {
+    float: left;
+    text-align: center;
+
+    .game-tile-column {
+      padding: 2px;
+    }
+  }
+
+  .notification.is-info{
+    cursor: pointer;
+    background-color: grey;
+    line-height: 65px;
+    width: 100px;
+    height: 100px;
+    font-size: 70px;
+  }
+}
+
+#reset-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 20px 0px;
+}
+
+#game-over-text {
+  font-size: 24px;
+}
+
+.game-over-buttons-container {
+  margin: auto;
+  width: 100%;
+
+  #start-over-button{
+    width: 45%;
+    float: left;
+    margin: 10px 5px 20px 0px;
+  }
+  #leaderboard-button{
+    width: 45%;
+    float: right;
+    margin: 10px 0px 20px 5px;
+  }
+}

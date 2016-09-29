@@ -1,4 +1,6 @@
 import React from 'react';
+import ResetButton from './ResetButton';
+import GameOverContent from './GameOverContent';
 
 var GameBoard = React.createClass({
 
@@ -15,59 +17,73 @@ var GameBoard = React.createClass({
     return(
       <div>
         {this.props.store.canStartGame ? (
-          <div>
-            <div className='columns'>
-              <div className='column'>
-                <div id='row_1_col_1' className='notification is-info' onClick={this.playerMove}>
-                  {gameplayData.row_1_col_1}
+          <section className="hero is-dark is-small">
+            <div id="game-board-container" className="hero-body">
+              <div className="has-text-centered">
+                <div id="game-board-container">
+                  <div className='game-tile-row'>
+                    <div className='game-tile-column'>
+                      <div id='row_1_col_1' className='notification is-info' onClick={this.playerMove}>
+                        {gameplayData.row_1_col_1}
+                      </div>
+                    </div>
+                    <div className='game-tile-column'>
+                      <div id='row_1_col_2' className='notification is-info' onClick={this.playerMove}>
+                        {gameplayData.row_1_col_2}
+                      </div>
+                    </div>
+                    <div className='game-tile-column'>
+                      <div id='row_1_col_3' className='notification is-info' onClick={this.playerMove}>
+                        {gameplayData.row_1_col_3}
+                      </div>
+                    </div>
+                  </div>
+                  <div className='game-tile-row'>
+                    <div className='game-tile-column'>
+                      <div id='row_2_col_1' className='notification is-info' onClick={this.playerMove}>
+                        {gameplayData.row_2_col_1}
+                      </div>
+                    </div>
+                    <div className='game-tile-column'>
+                      <div id='row_2_col_2' className='notification is-info' onClick={this.playerMove}>
+                        {gameplayData.row_2_col_2}
+                      </div>
+                    </div>
+                    <div className='game-tile-column'>
+                      <div id='row_2_col_3' className='notification is-info' onClick={this.playerMove}>
+                        {gameplayData.row_2_col_3}
+                      </div>
+                    </div>
+                  </div>
+                  <div className='game-tile-row'>
+                    <div className='game-tile-column'>
+                      <div id='row_3_col_1' className='notification is-info' onClick={this.playerMove}>
+                        {gameplayData.row_3_col_1}
+                      </div>
+                    </div>
+                    <div className='game-tile-column'>
+                      <div id='row_3_col_2' className='notification is-info' onClick={this.playerMove}>
+                        {gameplayData.row_3_col_2}
+                      </div>
+                    </div>
+                    <div className='game-tile-column'>
+                      <div id='row_3_col_3' className='notification is-info' onClick={this.playerMove}>
+                        {gameplayData.row_3_col_3}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className='column'>
-                <div id='row_1_col_2' className='notification is-info' onClick={this.playerMove}>
-                  {gameplayData.row_1_col_2}
-                </div>
-              </div>
-              <div className='column'>
-                <div id='row_1_col_3' className='notification is-info' onClick={this.playerMove}>
-                  {gameplayData.row_1_col_3}
-                </div>
+                <ResetButton
+                  resetGame={this.props.resetGame}
+                  store={this.props.store}
+                />
+                <GameOverContent
+                  startGame={this.props.startGame}
+                  store={this.props.store}
+                />
               </div>
             </div>
-            <div className='columns'>
-              <div className='column'>
-                <div id='row_2_col_1' className='notification is-info' onClick={this.playerMove}>
-                  {gameplayData.row_2_col_1}
-                </div>
-              </div>
-              <div className='column'>
-                <div id='row_2_col_2' className='notification is-info' onClick={this.playerMove}>
-                  {gameplayData.row_2_col_2}
-                </div>
-              </div>
-              <div className='column'>
-                <div id='row_2_col_3' className='notification is-info' onClick={this.playerMove}>
-                  {gameplayData.row_2_col_3}
-                </div>
-              </div>
-            </div>
-            <div className='columns'>
-              <div className='column'>
-                <div id='row_3_col_1' className='notification is-info' onClick={this.playerMove}>
-                  {gameplayData.row_3_col_1}
-                </div>
-              </div>
-              <div className='column'>
-                <div id='row_3_col_2' className='notification is-info' onClick={this.playerMove}>
-                  {gameplayData.row_3_col_2}
-                </div>
-              </div>
-              <div className='column'>
-                <div id='row_3_col_3' className='notification is-info' onClick={this.playerMove}>
-                  {gameplayData.row_3_col_3}
-                </div>
-              </div>
-            </div>
-          </div>
+          </section>
         ) : null }
       </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import StartButton from './StartButton';
 
 var PlayerName = React.createClass({
 
@@ -14,13 +15,29 @@ var PlayerName = React.createClass({
   render() {
     return(
       <div>
-        <h3>PlayerName component</h3>
-        <input
-          className=""
-          placeholder="Enter your initials"
-          type="text"
-          onChange={this.validateInitials}
-        />
+      {!this.props.store.gameId ? (
+        <section className="hero is-dark is-small">
+          <div className="hero-body">
+            <div className="container has-text-centered">
+              <div className="control">
+                <div id="name-input-container" className="control">
+                  <input
+                    id="name-input"
+                    className="input"
+                    placeholder="Enter Your Initials"
+                    type="text"
+                    onChange={this.validateInitials}
+                  />
+                  <StartButton
+                    startGame={this.props.onStartGame}
+                    store={this.props.store}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ): null}
       </div>
     );
   }

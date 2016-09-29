@@ -6,7 +6,7 @@ var ResetButton = React.createClass({
     return(
       <div>
         {this.props.store.gameId && !this.props.store.gameIsOver ? (
-          <div className="" onClick={this.props.resetGame}> Start Over </div>
+          <div id="reset-button" className="button is-danger is-outlined" onClick={this.props.resetGame}> Start Over </div>
         ) : null}
       </div>
     );
