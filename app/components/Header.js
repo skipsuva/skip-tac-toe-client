@@ -10,7 +10,7 @@ var Header = React.createClass({
           <div className="container">
             <div className="title">
               <img className="header-menu-png"
-              src="/vendor/assets/images/logo.png"
+              src={require("../../vendor/assets/images/logo.png")}
               />
             </div>
           </div>

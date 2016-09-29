@@ -21,7 +21,7 @@ module.exports = {
         query: {presets: ['es2015', 'react']}
       },
       {test: /\.scss$/, loaders: ['style', 'css', 'sass']},
-      {test: /\.png$/, loader: 'file'}
+      {test: /\.png$/, loader: 'url-loader?limit=8192'}
     ]
   },
   plugins: [
