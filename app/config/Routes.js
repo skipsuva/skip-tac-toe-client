@@ -1,5 +1,5 @@
 import React          from 'react';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 import Header         from '../components/Header';
 import Main           from '../components/Main';
@@ -8,7 +8,7 @@ import GameContainer  from '../components/GameContainer';
 
 
 var Routes = (
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route component={Header}>
       <Route path='/' component={Main}>
         <IndexRoute component={LeaderboardContainer} />
