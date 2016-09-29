@@ -16,7 +16,7 @@ var Leaderboard = React.createClass({
             <thead>
               <tr>
                 <th>Player</th>
-                <th>Moves to Win</th>
+                <th>Time to Win</th>
               </tr>
             </thead>
             <tbody>

@@ -7,7 +7,7 @@ var BeginGameButton = React.createClass({
     return(
       <div>
         <div className="begin-game-button-container">
-          <Link id= "begin-game-button" className="button is-success is-outlined" to='/play'>PLAY</Link>
+          <Link id= "begin-game-button" className="button is-warning is-outlined" to='/play'>PLAY</Link>
         </div>
       </div>
     );
