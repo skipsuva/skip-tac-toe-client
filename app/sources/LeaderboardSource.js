@@ -5,7 +5,7 @@ var LeaderboardSource = {
   fetchLeaderboard() {
     return new Promise(function (resolve, reject) {
       $.ajax({
-        url: 'https://skip-tac-toe-api.herokuapp.com/v1/leaderboard',
+        url: 'http://localhost:3000/v1/leaderboard',
         method: 'GET',
         data: { }
       }).done(resolve).fail(reject);
