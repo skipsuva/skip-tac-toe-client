@@ -50,6 +50,10 @@ body {
     border-radius: 4px;
     background-color: lighten($dark-grey, 25%);
 
+    #loading-table-button {
+      width: 100%;
+    }
+
     th {
       color: white;
       border-radius: 4px;
