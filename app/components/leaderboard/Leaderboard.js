@@ -1,6 +1,7 @@
 import React from 'react';
 import LeaderboardActions from '../../actions/LeaderboardActions';
 import LeaderboardItem from './LeaderboardItem';
+import LoadingRow from './LoadingRow';
 
 var Leaderboard = React.createClass({
 
@@ -20,11 +21,13 @@ var Leaderboard = React.createClass({
               </tr>
             </thead>
             <tbody>
-              {this.props.LeaderboardStore.leaderboardItems.map(function(item) {
-                return <LeaderboardItem
-                  key={item.id}
-                  item={item} />;
-              })}
+              {!this.props.LeaderboardStore.loading ?
+                (this.props.LeaderboardStore.leaderboardItems.map(function(item) {
+                  return <LeaderboardItem
+                    key={item.id}
+                    item={item} />;
+                })
+              ): <LoadingRow /> }
             </tbody>
           </table>
         </div>
