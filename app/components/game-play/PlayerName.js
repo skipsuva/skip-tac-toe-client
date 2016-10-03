@@ -5,7 +5,7 @@ var PlayerName = React.createClass({
 
   validateInitials(e) {
     var initials = e.target.value;
-    if(initials.length > 2) {
+    if(initials.length > 1) {
       this.props.onValidInitials(initials);
     } else {
       this.props.onInvalidInitials();
